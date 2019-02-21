@@ -1,0 +1,112 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Adding jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<title>Ej2 - Aritz Oscoz Irurozqui</title>
+
+	<script>
+	$(document).ready(function(){
+
+	//PESTAÑA A 
+	  $("#clickIMGA").click(function(){
+		$("#tabs").show();
+	  });
+
+	//PESTAÑA B
+	  $("#clickIMGB").click(function(){
+		$("#tabs").show();
+	  });
+
+	});
+	</script>
+
+</head>
+
+<body>
+
+<!-- IMÁGENES INICIALES-->
+<div class="container mt-5">
+	<div class="row">
+
+	  <div class="col-md-5 mt-2 pl-3 pr-3" id="clickIMGA">
+		<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" alt="Responsive image">
+	  </div>
+
+	  <div class="col-md-5 mt-2 pl-3 pr-3" id="clickIMGB">
+		<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" alt="Responsive image">
+	  </div>
+
+	</div>
+</div>
+
+
+<!-- PESTAÑAS -->
+<div class="container mt-5" >
+
+	<ul class="nav nav-tabs" role="tablist" id="tabs" style="display:none;">
+	  <li class="nav-item">
+		<a class="nav-link active" href="#P_IMÁGEN" role="tab" data-toggle="tab">IMÁGEN</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="#P_DESCRIPCIÓN" role="tab" data-toggle="tab">DESCRIPCIÓN</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="#P_PRECIO" role="tab" data-toggle="tab">PRECIO</a>
+	  </li>
+	</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+
+  <div role="tabpanel" class="tab-pane fade in active" id="P_IMÁGEN">
+	<!-- img grande -->
+	<div class="row pb-3 pt-3">
+		<div class="col-md-7">
+			<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" alt="Responsive image">
+		</div>
+	</div>
+	<!-- miniaturas -->
+	<div class="row  pb-3">
+		<div class="ml-3 r-2">
+			<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" width="135px">
+		</div>
+		<div class="ml-2 r-2">
+			<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" width="135px">
+		</div>
+		<div class="ml-2 r-2">
+			<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" width="135px">
+		</div>
+	</div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="P_DESCRIPCIÓN">
+  bbb
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="P_PRECIO">
+  ccc
+  </div>
+
+</div>
+</div>
+
+<!-- CIERRO SECCIÓN PESTAÑAS -->
+
+<!-- FIN -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  </body>
+</html>

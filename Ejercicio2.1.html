@@ -1,112 +1,241 @@
 ﻿<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
     <!-- Adding jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-	<title>Ej2 - Aritz Oscoz Irurozqui</title>
+    <title>Ej2 - Aritz Oscoz Irurozqui</title>
+	
+	
+	<script> //SCRIPT JQUERY
 
-	<script>
 	$(document).ready(function(){
 
-	//PESTAÑA A 
-	  $("#clickIMGA").click(function(){
-		$("#tabs").show();
+	//CLICK EN PRODUCTO A 
+	  $("#IMGA").click(function(){
+			$("#tabs").show();
+			$("#imgBIG_A").show();
+			$("#miniaturas_A").show();
+			$("#DESCRIPCIÓN_A").show();
+			$("#texto_A").css("color", "red").slideDown(1250);
+			
+			$("#miniaturas_B").hide();
+			$("#imgBIG_B").hide();
+			$("#DESCRIPCIÓN_B").hide();
+			$("#texto_B").hide();
+		});
+
+	//CLICK EN PRODUCTO B 
+	  $("#IMGB").click(function(){
+			$("#tabs").show();
+			$("#imgBIG_B").show();
+			$("#miniaturas_B").show();
+			$("#DESCRIPCIÓN_B").show();
+			$("#texto_B").css("color", "blue").slideDown(1250);
+
+			$("#miniaturas_A").hide();
+			$("#imgBIG_A").hide();
+			$("#DESCRIPCIÓN_A").hide();
+			$("#texto_A").hide();
 	  });
 
-	//PESTAÑA B
-	  $("#clickIMGB").click(function(){
-		$("#tabs").show();
-	  });
+	//Miniaturas IMG (cambio SRC de la imagen grande)
+		$("#miniaturas_A img").click(function(){
+			$("#imgBIG_A").hide();
+			var imgsrc = $(this).attr('src');
+			$("#imgBIG_A").attr("src",imgsrc);
+			$("#imgBIG_A").fadeIn("slow");
+		});
+
+		$("#miniaturas_B img").click(function(){
+			$("#imgBIG_B").hide();
+			var imgsrc = $(this).attr('src');
+			$("#imgBIG_B").attr("src",imgsrc);
+			$("#imgBIG_B").fadeIn("slow");
+		});
+
+		
+	//SUMA
+		//(cuando se modifica o #input_A)
+		$("#input_A").on("input", function() {
+			var valorIN_A = eval($(this).val()); 						//Obtengo el valor del input A
+			var valorIN_B = eval($("#input_B").val()); 			//Obtengo el valor del input B
+			var valorOUT_A = valorIN_A*1; 									//Obtengo el total (A)
+			var valorOUT_B = eval($("#output_B").val()); 		//Obtengo el total (B)
+			$("#output_A").attr("value",valorOUT_A); 				//Escribo el total (A) 
+			var valorTotal = valorOUT_A + valorOUT_B;				//Calculo el TOTAL€ productosTotales 
+			$("#output_total").attr("value",valorTotal);		//Escribo el TOTAL€ productosTotales  
+		});
+		//(cuando se modifica o #input_B)
+		$("#input_B").on("input", function() {
+			var valorIN_B = eval($(this).val()); 						//Obtengo el valor del input B
+			var valorIN_A = eval($("#input_A").val()); 			//Obtengo el valor del input A
+			var valorOUT_B = valorIN_B*2; 									//Obtengo el total (B)
+			var valorOUT_A = eval($("#output_A").val()); 		//Obtengo el total (A)
+			$("#output_B").attr("value",valorOUT_B); 				//Escribo el total (B) 
+			var valorTotal = valorOUT_A + valorOUT_B;				//Calculo el TOTAL€ productosTotales 
+			$("#output_total").attr("value",valorTotal);		//Escribo el TOTAL€ productosTotales 
+		});
 
 	});
-	</script>
+
+
+	</script> <!-- CIERRO SCRIPT JQUERY-->
 
 </head>
 
-<body>
+
+<body><!-- BOOTSTRAP BODY-->
 
 <!-- IMÁGENES INICIALES-->
-<div class="container mt-5">
+<div class="container">
 	<div class="row">
-
-	  <div class="col-md-5 mt-2 pl-3 pr-3" id="clickIMGA">
-		<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" alt="Responsive image">
+		<!-- IMAGEN A -->
+	  <div class="col-sm-4 mb-3 mt-3" id="IMGA">
+			<img class="mx-auto d-block" src="https://www.kroger.com/product/images/xlarge/front/0002840042068" alt="Responsive image" width="200">
 	  </div>
-
-	  <div class="col-md-5 mt-2 pl-3 pr-3" id="clickIMGB">
-		<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" alt="Responsive image">
-	  </div>
-
+		<!-- IMAGEN B -->
+	  <div class="col-sm-4 mb-3 mt-3" id="IMGB">
+			<img class="mx-auto d-block" src="https://www.dollargeneral.com/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/0/0/00028400645249_0.jpg" width="200" >
+		</div>
 	</div>
 </div>
 
+<!-- TEXTO PRODUCTO SELECCIONADO-->
+<div class="container">
+	<div class="row">
+		<!-- TEXTO A -->
+		<div class="col-sm-8 mb-3 mt-3" id="texto_A" style="display:none;">
+			<h2 class="text-center">Producto A seleccionado</h2>
+		</div>
+		<!-- TEXTO B -->
+		<div class="col-sm-8 mb-3 mt-3" id="texto_B" style="display:none;">
+			<h2 class="text-center">Producto B seleccionado</h2>
+		</div>
+	</div>
+</div>
 
 <!-- PESTAÑAS -->
-<div class="container mt-5" >
+<div class="container">
 
-	<ul class="nav nav-tabs" role="tablist" id="tabs" style="display:none;">
+	<!-- SECCIONES -->
+	<ul class="nav nav-tabs" role="tablist" id="tabs"  style="display:none;"> 
 	  <li class="nav-item">
-		<a class="nav-link active" href="#P_IMÁGEN" role="tab" data-toggle="tab">IMÁGEN</a>
+			<a class="nav-link active" href="#IMAGEN" role="tab" data-toggle="tab">IMAGEN</a>
 	  </li>
 	  <li class="nav-item">
-		<a class="nav-link" href="#P_DESCRIPCIÓN" role="tab" data-toggle="tab">DESCRIPCIÓN</a>
+			<a class="nav-link" href="#DESCRIPCIÓN" role="tab" data-toggle="tab">DESCRIPCIÓN</a>
 	  </li>
 	  <li class="nav-item">
-		<a class="nav-link" href="#P_PRECIO" role="tab" data-toggle="tab">PRECIO</a>
+			<a class="nav-link" href="#PRECIO" role="tab" data-toggle="tab">PRECIO</a>
 	  </li>
 	</ul>
 
-<!-- Tab panes -->
+<!-- DIV PESTAÑAS - TAB PANELS -->
 <div class="tab-content">
 
-  <div role="tabpanel" class="tab-pane fade in active" id="P_IMÁGEN">
-	<!-- img grande -->
-	<div class="row pb-3 pt-3">
-		<div class="col-md-7">
-			<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" alt="Responsive image">
+	<!-- PESTAÑA 1 -->
+  <div role="tabpanel" class="tab-pane fade in active" id="IMAGEN">
+		<!-- IMG GRANDE -->
+		<div class="row pb-3 pt-3">
+			<div class="col-sm-7">
+				<!-- IMAGEN A-->
+				<img  id="imgBIG_A" src="https://escenarq.files.wordpress.com/2014/06/tp-central-park-foliage-from-above-11-12-11.jpg?w=488&h=325" class="img-fluid" alt="Responsive image" width="350" height="350">
+				<!-- IMAGEN B-->
+				<img  id="imgBIG_B" src="https://pentsamenduak.files.wordpress.com/2015/11/img_0360.jpg?w=487&h=324" class="img-fluid" alt="Responsive image" width="350" height="350">
+			</div>
 		</div>
-	</div>
-	<!-- miniaturas -->
-	<div class="row  pb-3">
-		<div class="ml-3 r-2">
-			<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" width="135px">
+		<!-- MINIATURAS A -->
+		<div role="tabpanel" class="row pb-3" id="miniaturas_A">
+			<div class="ml-3 r-2">
+				<img src="https://escenarq.files.wordpress.com/2014/06/tp-central-park-foliage-from-above-11-12-11.jpg?w=488&h=325" class="img-fluid" width="135" height="135">
+			</div>
+			<div class="ml-2 r-2">
+				<img src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg" class="img-fluid" width="135" height="135">
+			</div>
+			<div class="ml-2 r-2">
+				<img src="https://www.arteparaguay.com/wp-content/uploads/2017/03/paisajesparaguari.jpg" class="img-fluid" width="135" height="135">
+			</div>
 		</div>
-		<div class="ml-2 r-2">
-			<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" width="135px">
+		<!-- MINIATURAS B -->
+		<div role="tabpanel" class="row pb-3" id="miniaturas_B">
+			<div class="ml-3 r-2">
+				<img src="https://pentsamenduak.files.wordpress.com/2015/11/img_0360.jpg?w=487&h=324" class="img-fluid" width="135" height="135">
+			</div>
+			<div class="ml-2 r-2">
+				<img src="https://analisisdelproyectodearquitecturaypaisaje.files.wordpress.com/2012/12/dsc3570.jpg?w=487" class="img-fluid" width="135" height="135">
+			</div>
+			<div class="ml-2 r-2">
+				<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" width="135" height="135">
+			</div>
 		</div>
-		<div class="ml-2 r-2">
-			<img src="http://sergioariasfotografia.es/blog/wp-content/uploads/2018/01/atardecer-en-la-albufera-comparativa-de-filtros-inversos-sergio-arias.jpg" class="img-fluid" width="135px">
-		</div>
-	</div>
-  </div>
 
-  <div role="tabpanel" class="tab-pane fade" id="P_DESCRIPCIÓN">
-  bbb
-  </div>
+	</div>
+	
+	<!-- PESTAÑA 2 -->
+		<div role="tabpanel" class="tab-pane fade" id="DESCRIPCIÓN" >
+				<!-- DESCRIPCIÓN A -->
+				<div role="tabpanel" id="DESCRIPCIÓN_A" class="mt-3">	
+					<h3>Esta es la descripción del producto A</h3>
+					<p>El texto que quieras poner: En la pestaña Imagen, se mostrarán una pequeña galería en la que tendremos una imagen ampliada y tres miniaturas. Al pulsar cada miniatura, la imagen ampliada mostrará la correspondiente fotografía. Se intentará dar algún efecto de animación fade o animation</p>
+					<p>El texto que quieras poner: En la pestaña Imagen, se mostrarán una pequeña galería en la que tendremos una imagen ampliada y tres miniaturas. Al pulsar cada miniatura, la imagen ampliada mostrará la correspondiente fotografía. Se intentará dar algún efecto de animación fade o animation</p>
+				</div>
+				<!-- DESCRIPCIÓN B -->
+				<div role="tabpanel" id="DESCRIPCIÓN_B" class="mt-3">	
+					<h3>Esta es la descripción del producto B</h3>
+					<p>El texto que quieras poner: En la pestaña Imagen, se mostrarán una pequeña galería en la que tendremos una imagen ampliada y tres miniaturas. Al pulsar cada miniatura, la imagen ampliada mostrará la correspondiente fotografía. Se intentará dar algún efecto de animación fade o animation</p>
+					<p>El texto que quieras poner: En la pestaña Imagen, se mostrarán una pequeña galería en la que tendremos una imagen ampliada y tres miniaturas. Al pulsar cada miniatura, la imagen ampliada mostrará la correspondiente fotografía. Se intentará dar algún efecto de animación fade o animation</p>	
+				</div>
+		</div>
+		
+	<!-- PESTAÑA 3 -->
+  <div role="tabpanel" class="tab-pane fade" id="PRECIO">
+	
+	<div class="container mt-3 mb-3">
+		<!-- Tabla con los precios-->
+		<table>
+			<tr>
+				<td style="width:50%;">
+					<label style="margin-right:10px;">	*PRODUCTO A (1€)*	</label>
+					<input type="number" min="0"  id="input_A" style="text-align:right" value="0" />
+				</td>
+				<td style="width:50%;">
+						<label style="margin-right:10px;">	TOTAL (€) PRODUCTO A	</label>
+						<input type="number" min="0"  id="output_A" style="text-align:center" value="0" disabled/>
+				</td>
+			</tr>
+			<tr>
+				<td style="width:50%;">
+					<label style="margin-right:10px;">	*PRODUCTO B (2€)*	</label>
+					<input type="number" min="0"  id="input_B" style="text-align:right" value="0" />
+				</td>
+				<td style="width:50%;">
+						<label style="margin-right:10px;">	TOTAL (€) PRODUCTO B	</label>
+						<input type="number" min="0"  id="output_B" style="text-align:center" value="0" disabled/>
+				</td>
+			</tr>
+			<tr>
+				<td class="mt-3" colspan="2" style="width:50%; text-align: center">
+						<label style="margin-right:10px;">	TOTAL COMPRA (€)	</label>
+						<input type="number" min="0"  id="output_total" style="width:80%; text-align:center" value="0" disabled/>
+				</td>
+			</tr>
+		</table>
 
-  <div role="tabpanel" class="tab-pane fade" id="P_PRECIO">
-  ccc
   </div>
 
 </div>
 </div>
-
 <!-- CIERRO SECCIÓN PESTAÑAS -->
 
 <!-- FIN -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
-  </body>
+</body>
 </html>

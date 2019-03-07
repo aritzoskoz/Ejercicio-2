@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Adding jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <title>Ej2.2 - Aritz Oscoz Irurozqui</title>
+    
+    <script> 
+    $(document).ready(function(){
+        var aleat1=0;var id1=0;
+        var aleat2=0;var id2=0;
+        var aleat3=0;var id3=0;
+        
+        //CLICK en BUTTON
+        $("button").click(function () {
+            $.get("https://jsonplaceholder.typicode.com/posts/", function(data,status){
+                //NúmeroAleatorio
+                var a1 = Math.floor(Math.random()*data.length);
+                var a2 = Math.floor(Math.random()*data.length);
+                var a3 = Math.floor(Math.random()*data.length);
+                while(a1==a2 | a1==a3 | a2==a3){
+                    a1 = Math.floor(Math.random()*data.length);
+                    a2 = Math.floor(Math.random()*data.length);
+                    a3 = Math.floor(Math.random()*data.length);
+                }
+                aleat1=a1; aleat2=a2; aleat3=a3;
+                id1=data[aleat1].id;
+                id2=data[aleat2].id;
+                id3=data[aleat3].id;
+
+                var titulo1 = "<li> TÍTULO "+aleat1 +" (id "+id1+")<em>: " + data[aleat1].title + "</em> </li>";
+                var titulo2 = "<li> TÍTULO "+aleat2 +" (id "+id2+")<em>: " + data[aleat2].title + "</em> </li>";
+                var titulo3 = "<li> TÍTULO "+aleat3 +" (id "+id3+")<em>: " + data[aleat3].title + "</em> </li>";
+                $("#T1").html(titulo1);
+                $("#T2").html(titulo2);
+                $("#T3").html(titulo3);
+            });
+        });
+
+        //CLICK en TÍTULO 1
+        $("#T1").click(function(){
+            var body1_salida="";
+            $.get("https://jsonplaceholder.typicode.com/posts/"+id1, function(data,status){
+                body1_salida = "<ul> BODY "+aleat1 +" (id "+id1+")<em>: " + data.body + "</em> </ul>";
+                $("#S11").html(body1_salida); 
+            });
+            $.get("https://jsonplaceholder.typicode.com/photos/"+id1, function(data,status){
+                var photo1 = "<img class='img-fluid mr-2 ml-2' src='"+ data.url +"' alt='Responsive image'>";
+                $("#S12").html(photo1); 
+            });
+        });
+            
+        //CLICK en TÍTULO 2
+        $("#T2").click(function(){
+            var body2_salida="";
+            $.get("https://jsonplaceholder.typicode.com/posts/"+id2, function(data,status){
+                body2_salida = "<ul> BODY "+aleat2 +" (id "+id2+")<em>: " + data.body + "</em> </ul>";
+                $("#S21").html(body2_salida); 
+            });
+            $.get("https://jsonplaceholder.typicode.com/photos/"+id2, function(data,status){
+                var photo2 = "<img class='img-fluid mr-2 ml-2' src='"+ data.url +"' alt='Responsive image'>";
+                $("#S22").html(photo2); 
+            });
+        });
+
+        //CLICK en TÍTULO 3
+        $("#T3").click(function(){
+            var body3_salida="";
+            $.get("https://jsonplaceholder.typicode.com/posts/"+id3, function(data,status){
+                body3_salida = "<ul> BODY "+aleat3 +" (id "+id3+")<em>: " + data.body + "</em> </ul>";
+                $("#S31").html(body3_salida); 
+            });
+            $.get("https://jsonplaceholder.typicode.com/photos/"+id3, function(data,status){
+                var photo3 = "<img class='img-fluid mr-2 ml-2' src='"+ data.url +"' alt='Responsive image'>";
+                $("#S32").html(photo3); 
+            });
+        });
+               
+    });
+    /////////////////////////
+    </script>
+</head>
+
+<body>
+    
+    <div class="panel panel-default mt-5 mb-5">
+
+        <!-- Button -->
+        <button id="get_btn" class="btn btn-primary mx-auto d-block mb-3">BOTÓN</button>
+        
+        <!-- Títulos -->
+        <div class="container" id="T1"> </div>; 
+        <div class="container" id="T2"> </div>; 
+        <div class="container" id="T3"> </div>;  
+        
+        <!-- Body -->
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-sm-4 mb-3 mt-3" id="salida1">
+                    <div id="S11"></div>
+                    <div id="S12"></div>
+                </div>
+                <div class="col-sm-4 mb-3 mt-3" id="salida2">
+                    <div id="S21"></div>
+                    <div id="S22"></div>
+                </div>
+                <div class="col-sm-4 mb-3 mt-3" id="salida3">
+                    <div id="S31"></div>
+                    <div id="S32"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
